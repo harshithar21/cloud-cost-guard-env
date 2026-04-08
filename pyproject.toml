@@ -18,3 +18,5 @@ dependencies = [
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["cloud_cost_guard_env*"]
+[project.scripts]
+server = "server.app:main"
