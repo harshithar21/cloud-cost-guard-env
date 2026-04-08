@@ -18,3 +18,16 @@ def create_env():
     return CloudCostGuardEnvironment(task_id=task_id, seed=seed)
 
 app = create_app(create_env, CostGuardAction, CostGuardObservation, env_name="cloud_cost_guard_env")
+
+@app.get("/")
+def root():
+    """Root endpoint - returns API info."""
+    return {
+        "message": "CloudCostGuard RL Environment Server",
+        "endpoints": {
+            "health": "GET /health",
+            "reset": "POST /reset",
+            "step": "POST /step",
+            "docs": "GET /docs"
+        }
+    }

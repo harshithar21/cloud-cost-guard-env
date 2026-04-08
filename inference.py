@@ -13,7 +13,7 @@ from typing import List
 from openai import OpenAI
 
 # ── Config ────────────────────────────────────────────────────────────────────
-API_BASE_URL = os.getenv("API_BASE_URL", "https://api-inference.huggingface.co/v1")
+API_BASE_URL = os.getenv("API_BASE_URL", "https://router.huggingface.co/v1")
 API_KEY      = os.getenv("HF_TOKEN", "")
 MODEL_NAME   = os.getenv("MODEL_NAME", "meta-llama/Llama-3.2-3B-Instruct")
 TEMPERATURE  = 0.3
@@ -100,7 +100,6 @@ Pick the action that saves the most cost without violating SLAs."""
             raise ValueError("Missing action_type")
         return action
     except Exception as e:
-        print(f"[DEBUG] LLM parse error: {e}", flush=True)
         # Fallback: find most wasteful pod and right-size it
         pods = obs.get("pods", [])
         if pods:
