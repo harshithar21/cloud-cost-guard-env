@@ -1,0 +1,29 @@
+spec_version: 1
+name: cloud_cost_guard_env
+type: environment
+runtime: docker
+description: >
+  A Kubernetes FinOps RL environment where agents learn to cut cloud costs
+  while maintaining SLAs. Tasks range from pod right-sizing to multi-cluster
+  budget balancing under traffic surges.
+tags:
+  - openenv
+  - finops
+  - kubernetes
+  - cloud-cost
+  - rl-environment
+app: server.app:app
+port: 8000
+tasks:
+  - id: task_easy
+    name: Pod Right-Sizing
+    difficulty: easy
+    max_steps: 15
+  - id: task_medium
+    name: Spot Migration and Auto-scaling
+    difficulty: medium
+    max_steps: 20
+  - id: task_hard
+    name: Budget Balancing Under Surge
+    difficulty: hard
+    max_steps: 25
