@@ -1,6 +1,15 @@
 ---
+title: Cloud Cost Guard
+emoji: 🚀
+colorFrom: blue
+colorTo: green
+sdk: docker
+app_port: 7860
+pinned: false
+---
 
-## Live Demo
+## 🚀 Live Demo
+
 🔗 API: https://harshithar2105-cloud-cost-guard.hf.space  
 📘 Docs: https://harshithar2105-cloud-cost-guard.hf.space/docs  
 
@@ -9,17 +18,8 @@
 2. Then `/step` with an action
 3. Watch cost decrease without SLA violations
 
-title: Cloud Cost Guard
-emoji: 🚀
-colorFrom: blue
-colorTo: green
-sdk: docker
-app_port: 7860
-pinned: false
+💡 This project simulates real-world cloud cost optimization where AI agents reduce infrastructure cost by up to 50% while maintaining performance SLAs.
 
- This project simulates real-world cloud cost optimization where AI agents reduce infrastructure cost by up to 50% while maintaining performance SLAs.
-
----
 # CloudCostGuardEnv — Kubernetes FinOps RL Environment
 
 A real-world OpenEnv environment where AI agents learn to optimize cloud infrastructure costs while maintaining service-level agreements (SLAs).
