@@ -1,4 +1,12 @@
-<<<<<<< HEAD
+---
+title: Cloud Cost Guard
+emoji: 🚀
+colorFrom: blue
+colorTo: green
+sdk: docker
+app_port: 7860
+pinned: false
+---
 # CloudCostGuardEnv — Kubernetes FinOps RL Environment
 
 A real-world OpenEnv environment where AI agents learn to optimize cloud infrastructure costs while maintaining service-level agreements (SLAs).
@@ -374,17 +382,3 @@ Adjust in `server/simulator.py`:
 
 - **OpenEnv Documentation:** https://github.com/meta-pytorch/OpenEnv
 - **Quick Start:** See `QUICK_START.md` for hands-on examples
-=======
----
-title: Cloud Cost Guard
-emoji: 📚
-colorFrom: red
-colorTo: indigo
-sdk: docker
-pinned: false
-license: mit
-short_description: Interactive RL simulator for Kubernetes cost optimization
----
-
-Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
->>>>>>> 7a9996be717168753c297b73042f1ec6295704e4
