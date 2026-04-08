@@ -1,4 +1,14 @@
 ---
+
+## Live Demo
+🔗 API: https://harshithar2105-cloud-cost-guard.hf.space  
+📘 Docs: https://harshithar2105-cloud-cost-guard.hf.space/docs  
+
+### Try it:
+1. Click `/reset`
+2. Then `/step` with an action
+3. Watch cost decrease without SLA violations
+
 title: Cloud Cost Guard
 emoji: 🚀
 colorFrom: blue
@@ -6,6 +16,9 @@ colorTo: green
 sdk: docker
 app_port: 7860
 pinned: false
+
+ This project simulates real-world cloud cost optimization where AI agents reduce infrastructure cost by up to 50% while maintaining performance SLAs.
+
 ---
 # CloudCostGuardEnv — Kubernetes FinOps RL Environment
 
