@@ -356,28 +356,20 @@ Adjust in `server/simulator.py`:
 
 ---
 
-## License & Citation
-
-Built for the OpenEnv FinOps RL Hackathon (Meta & Hugging Face).
+## Citation
 
 ```bibtex
 @misc{cloudcostguardenv2025,
   title={CloudCostGuardEnv: A Kubernetes FinOps Reinforcement Learning Environment},
-  author={Your Team},
+  author={CloudCostGuard Contributors},
   year={2025},
-  howpublished={\url{https://huggingface.co/spaces/...}}
+  url={https://github.com/your-username/cloud-cost-guard-env}
 }
 ```
 
 ---
 
-## Questions?
+## Resources
 
-- **OpenEnv Docs:** https://github.com/meta-pytorch/OpenEnv
-- **HuggingFace Spaces:** https://huggingface.co/spaces
-- **Hackathon Info:** Contact Meta/HF organizers
-
----
-
-**Last Updated:** April 2025  
-**Status:** ✅ Ready for submission
+- **OpenEnv Documentation:** https://github.com/meta-pytorch/OpenEnv
+- **Quick Start:** See `QUICK_START.md` for hands-on examples
