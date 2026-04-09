@@ -11,6 +11,7 @@ import time
 from typing import List
 
 from openai import OpenAI
+from websockets import http
 
 # ── Config ────────────────────────────────────────────────────────────────────
 API_BASE_URL = os.getenv("API_BASE_URL", "https://router.huggingface.co/v1")
@@ -129,7 +130,22 @@ async def run_task(task_id: str, client: OpenAI) -> float:
 
     async with httpx.AsyncClient(timeout=30.0) as http:
         # Reset with task_id
-        reset_resp = await http.post(f"{base_url}/reset", json={"task_id": task_id})
+        # Retry logic for /reset to avoid submission timing issues
+
+
+        async def safe_post_reset(http, url, payload, retries=5, delay=1):
+            for attempt in range(retries):
+                try:
+                    resp = await http.post(url, json=payload)
+                    return resp
+                except Exception as e:
+                    if attempt < retries - 1:
+                        await asyncio.sleep(delay)
+                    else:
+                        raise e
+
+# Use safe_post_reset here
+        reset_resp = await safe_post_reset(http, f"{base_url}/reset", {"task_id": task_id})
         result = reset_resp.json()
         obs = result.get("observation", {})
 
