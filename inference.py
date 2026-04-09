@@ -1,7 +1,7 @@
 """
 inference.py — CloudCostGuardEnv baseline inference script
 Required by hackathon. Uses OpenAI client. Reads credentials from env vars.
-Emits [START], [STEP], [END] logs exactly as specified.
+Emits [START], [STEP], [END] logs exactly as specified by the validator.
 """
 import asyncio
 import json
@@ -20,36 +20,25 @@ MODEL_NAME   = os.getenv("MODEL_NAME", "meta-llama/Llama-3.2-3B-Instruct")
 TEMPERATURE  = 0.3
 MAX_TOKENS   = 512
 
-# ENV_BASE_URL: validator may inject this, otherwise try common ports
-ENV_BASE_URL = os.getenv("ENV_BASE_URL", "http://localhost:7860")
+ENV_BASE_URL = os.getenv("ENV_BASE_URL", "http://localhost:8000")
 
 TASKS        = ["task_easy", "task_medium", "task_hard"]
 MAX_STEPS    = {"task_easy": 15, "task_medium": 20, "task_hard": 25}
 MAX_TOTAL_REWARD_PER_TASK = 3.0
 SUCCESS_THRESHOLD = 0.5
 
-# ── Logging helpers (EXACT format required by hackathon) ──────────────────────
+# ── Logging helpers — EXACT format the validator parses ───────────────────────
 def log_start(task: str, env: str, model: str):
-    print(json.dumps({"type": "START", "task": task, "env": env, "model": model}), flush=True)
+    print(f"[START] task={task} env={env} model={model}", flush=True)
 
 def log_step(step: int, action: dict, reward: float, done: bool, error=None):
-    print(json.dumps({
-        "type": "STEP",
-        "step": step,
-        "action": action,
-        "reward": reward,
-        "done": done,
-        "error": error,
-    }), flush=True)
+    action_str = json.dumps(action)
+    error_str  = str(error) if error else "null"
+    print(f"[STEP] step={step} action={action_str} reward={reward:.4f} done={done} error={error_str}", flush=True)
 
 def log_end(success: bool, steps: int, score: float, rewards: List[float]):
-    print(json.dumps({
-        "type": "END",
-        "success": success,
-        "steps": steps,
-        "score": score,
-        "rewards": rewards,
-    }), flush=True)
+    rewards_str = json.dumps(rewards)
+    print(f"[END] success={success} steps={steps} score={score:.4f} rewards={rewards_str}", flush=True)
 
 
 # ── Wait for server to be ready ───────────────────────────────────────────────
