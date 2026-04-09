@@ -15,6 +15,9 @@ COPY . /app/
 # Set Python path
 ENV PYTHONPATH=/app
 
+# Tell inference.py where the server is (same container, port 7860)
+ENV ENV_BASE_URL=http://localhost:7860
+
 # Health check
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
     CMD curl -f http://localhost:7860/health || exit 1
