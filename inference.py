@@ -200,7 +200,7 @@ async def run_task(task_id: str, client: OpenAI, base_url: str) -> float:
                     break
 
         total_reward = sum(rewards)
-        score   = min(1.0, max(0.0, total_reward / MAX_TOTAL_REWARD_PER_TASK))
+        score = max(0.01, min(0.99, total_reward / MAX_TOTAL_REWARD_PER_TASK))
         success = score >= SUCCESS_THRESHOLD
 
     except Exception as e:
